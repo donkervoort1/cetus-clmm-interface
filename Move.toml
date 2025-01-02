@@ -1,0 +1,28 @@
+[package]
+name = "sniper"
+edition = "2024.beta"
+
+[dependencies]
+Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "framework/testnet" }
+CetusClmm = { local = "./cetus-clmm-interface/sui/cetus_clmm" }
+
+[addresses]
+TokenSniper = "0x114425226e8a1a047030388a75611542b43e9fe2bba3d952a8c8a9b34adb5d53" # Testnet address
+
+[dev-addresses]
+TokenSniper = "0x069e6876882b1940f72e0ada2cb01e3730c5fd1904f952c90afdd0fb37e0afd4" # Mainnet address
+
+# If you still face issues with MoveStdlib, you can use this override:
+[patch.'https://github.com/MystenLabs/sui.git']
+"crates/sui-framework/packages/move-stdlib" = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/move-stdlib", rev = "framework/testnet" }
+
+# Named addresses for convenience in your Move code
+# example = "0x1234"  # This address would be importable in Move as @example
+
+# For development or testing dependencies
+[dev-dependencies]
+# ExampleTestPackage = { local = "../path/to/example_test_package" }
+
+# Configuration for build options, if needed
+# [build]
+# options = ["--test", "--dev-mode"]
